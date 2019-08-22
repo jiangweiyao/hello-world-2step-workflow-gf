@@ -1,0 +1,22 @@
+apps:
+
+# array of apps, each app must have the following fields:
+# 1. name: name of the app, mainly for ease of CLI usage
+# 2. repo: repo to pull app
+# 3. tag: tag or branch of repo (usually should be a version number)
+# 4. folder: folder to which repo should be checked out. This needs to match the agave definition 
+#    and should normally be [app repo name]-[version number].
+# 5. asset: default app asset to install, overridden by asset provided to CLI
+
+apps:
+- name: hello-world-gf
+  repo: https://gitlab.com/geneflow/apps/hello-world-gf.git
+  tag: '0.1'
+  folder: hello-world-gf-0.1
+  asset: none
+
+- name: wc-gf
+  repo: https://gitlab.com/geneflow/apps/wc-gf.git
+  tag: '0.1'
+  folder: wc-gf-0.1
+  asset: none

@@ -1,0 +1,46 @@
+%YAML 1.1
+---
+gfVersion: v1.0
+class: workflow
+
+# metadata
+name: hello-world-2step-workflow-gf
+description: Hello World two-step workflow
+documentation_uri:
+repo_uri: 'https://github.com/jiangweiyao/hello-world-2step-workflow-gf.git'
+version: '0.4'
+username: jyao
+
+final_output:
+- hello
+- wc
+
+# inputs
+inputs:
+  file:
+    label: Dummy Input File
+    description: Dummy input file
+    type: File
+    enable: true
+    visible: true
+
+
+
+# parameters
+
+# steps
+steps:
+  hello:
+    app: apps/hello-world-gf-0.1/app.yaml
+    depend: []
+    template:
+      file: '{workflow->file}'
+      output: helloworld.txt
+
+  wc:
+    app: apps/wc-gf-0.1/app.yaml
+    depend: [ "hello" ]
+    template:
+      file: '{hello->output}/helloworld.txt'
+      output: wc.txt
+
